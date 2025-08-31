@@ -28,8 +28,4 @@ jobs:
         isort --check-only .
         black --check .
         mypy app.py models.py routes.py
-<<<<<<< HEAD
         python -m pytest
-=======
-        python -m pytest
->>>>>>> 1bac4452c2659be602c228bf938dc7c10ecf295b
