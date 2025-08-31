@@ -1,9 +1,8 @@
+from flask import Blueprint, request, jsonify
+from app import db
+from models import Client, Parking, ClientParking
 from datetime import datetime
 
-from flask import Blueprint, jsonify, request
-
-from app import db
-from models import Client, ClientParking, Parking
 
 main_bp = Blueprint('main', __name__)
 

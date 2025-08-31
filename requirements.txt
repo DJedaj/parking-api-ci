@@ -7,4 +7,8 @@ Faker==30.8.0
 flake8==7.1.1
 isort==5.13.2
 black==24.10.0
+<<<<<<< HEAD
 mypy==1.11.1
+=======
+mypy==1.11.1
+>>>>>>> 1bac4452c2659be602c228bf938dc7c10ecf295b

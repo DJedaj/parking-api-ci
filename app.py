@@ -1,6 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1bac4452c2659be602c228bf938dc7c10ecf295b
 db = SQLAlchemy()
 
 
