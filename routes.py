@@ -102,7 +102,10 @@ def enter_parking():
     if existing_log and not existing_log.time_out:
         return jsonify({'error': 'Client is already on this parking'}), 400
 
-    parking_log = ClientParking(client_id=client_id, parking_id=parking_id)
+    parking_log = ClientParking(
+        client_id=client_id,
+        parking_id=parking_id
+    )
     parking.count_available_places -= 1
 
     db.session.add(parking_log)
