@@ -1,9 +1,13 @@
 # conftest.py
-import pytest
-from app import create_app
-from models import db as _db, Client, Parking, ClientParking
 from datetime import datetime, timedelta, timezone
+
+import pytest
+
+from app import create_app
 from factories import ClientFactory, ParkingFactory
+from models import Client, ClientParking, Parking
+from models import db as _db
+
 
 @pytest.fixture(scope='session')
 def app():

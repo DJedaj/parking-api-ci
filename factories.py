@@ -1,6 +1,7 @@
 # factories.py
 import factory
 from faker import Faker
+
 from models import Client, Parking
 
 fake = Faker()

@@ -1,7 +1,9 @@
 # test_api.py
-import pytest
 from datetime import datetime
-from models import Parking, ClientParking # Импортируем модели
+
+import pytest
+
+from models import ClientParking, Parking  # Импортируем модели
 
 # Маркер для тестов парковки
 parking = pytest.mark.parking
