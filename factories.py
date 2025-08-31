@@ -1,45 +1,43 @@
-# factories.py
 import factory
 from faker import Faker
 
-from models import Client, Parking
+from models import Client, ClientParking, Parking
 
-fake = Faker()
+# Создаём экземпляр Faker с явным указанием локали (например, 'ru_RU' для русского)
+fake = Faker("ru_RU")
 
 
 class ClientFactory(factory.alchemy.SQLAlchemyModelFactory):
-    """Фабрика для создания экземпляров модели Client."""
-
     class Meta:
         model = Client
-        sqlalchemy_session = None  # Будет установлено в тестах
-        sqlalchemy_session_persistence = (
-            "commit"  # Автоматически сохраняет объекты в БД
-        )
+        # sqlalchemy_session = db.session  # Если нужно, укажите сессию
 
-    name = factory.LazyAttribute(lambda x: fake.first_name())
-    surname = factory.LazyAttribute(lambda x: fake.last_name())
-    credit_card = factory.Maybe(
-        factory.Faker("boolean", chance_of_getting_true=50),
-        yes_declaration=factory.LazyAttribute(lambda x: fake.credit_card_number()),
-        no_declaration=None,
-    )
-    car_number = factory.LazyAttribute(lambda x: fake.license_plate())
+    id = factory.Sequence(lambda n: n)
+    name = fake.first_name()
+    surname = fake.last_name()
+    credit_card = fake.credit_card_number()
+    car_number = fake.license_plate()
 
 
 class ParkingFactory(factory.alchemy.SQLAlchemyModelFactory):
-    """Фабрика для создания экземпляров модели Parking."""
-
     class Meta:
         model = Parking
-        sqlalchemy_session = None  # Будет установлено в тестах
-        sqlalchemy_session_persistence = (
-            "commit"  # Автоматически сохраняет объекты в БД
-        )
+        # sqlalchemy_session = db.session
 
-    address = factory.LazyAttribute(lambda x: fake.address())
-    opened = factory.Faker("boolean")
-    count_places = factory.Faker("random_int", min=1, max=100)
+    id = factory.Sequence(lambda n: n)
+    address = fake.address()
+    opened = True
+    count_places = factory.Faker("random_int", min=10, max=100)
+    count_available_places = factory.SelfAttribute("count_places")
 
-    # count_available_places зависит от count_places
-    count_available_places = factory.LazyAttribute(lambda obj: obj.count_places)
+
+class ClientParkingFactory(factory.alchemy.SQLAlchemyModelFactory):
+    class Meta:
+        model = ClientParking
+        # sqlalchemy_session = db.session
+
+    id = factory.Sequence(lambda n: n)
+    client = factory.SubFactory(ClientFactory)
+    parking = factory.SubFactory(ParkingFactory)
+    time_in = factory.Faker("date_time_this_year")
+    time_out = None
