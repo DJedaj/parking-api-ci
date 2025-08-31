@@ -1,3 +1,4 @@
+from app import db  # type: ignore
 from datetime import datetime
 
 from app import db
