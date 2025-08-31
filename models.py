@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-=======
 from app import db
->>>>>>> 1bac4452c2659be602c228bf938dc7c10ecf295b
+
+
 from datetime import datetime
 
 from app import db
