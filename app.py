@@ -17,7 +17,7 @@ def create_app():
     app.register_blueprint(main_bp)
 
     # Импортируем модели ПОСЛЕ инициализации db. Используется для регистрации моделей.
-    from . import models  # noqa: F401
+    import models  # noqa: F401
 
     return app
 
