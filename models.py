@@ -1,4 +1,4 @@
-from app import db  # type: ignore
+from app import db  # noqa: F811
 from datetime import datetime
 
 from app import db
