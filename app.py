@@ -16,8 +16,8 @@ def create_app():
     from routes import main_bp
     app.register_blueprint(main_bp)
 
-    # Импортируем модели ПОСЛЕ инициализации db
-    from . import models
+    # Импортируем модели ПОСЛЕ инициализации db. Используется для регистрации моделей.
+    from . import models  # noqa: F401
 
     return app
 
