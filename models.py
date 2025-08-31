@@ -1,6 +1,13 @@
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from flask_sqlalchemy import SQLAlchemy
+
+    db: SQLAlchemy
+
 from datetime import datetime
 
-from app import db  # noqa: F811
+from app import db
 
 
 class Client(db.Model):
