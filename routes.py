@@ -145,3 +145,4 @@ def exit_parking():
     db.session.commit()
 
     return jsonify({'message': 'Client exited parking successfully, payment processed'}), 200
+    
